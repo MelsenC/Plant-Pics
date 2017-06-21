@@ -8,7 +8,11 @@ class PicsController < ApplicationController
 
   def create
     @pic = Pic.create(pic_params)
-    redirect_to root_path
+    if @pic.valid?
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
