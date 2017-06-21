@@ -15,4 +15,14 @@ RSpec.describe PicsController, type: :controller do
     end
   end
 
+  describe "pics#create action" do
+    it "should successfully create a new pic in the database" do
+      post :create, params: { pic: { message: 'Hello!' } }
+      expect(response).to redirect_to root_path
+
+      pic = Pic.last
+      expect(pic.message).to eq("Hello!")
+    end
+  end
+
 end
