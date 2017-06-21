@@ -8,4 +8,11 @@ RSpec.describe PicsController, type: :controller do
     end
   end
 
+  describe "pics#new action" do
+    it "should successfully show the new form" do
+      get :new
+      expect(response).to have_http_status(:success)
+    end
+  end
+
 end
