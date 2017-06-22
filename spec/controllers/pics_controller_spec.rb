@@ -2,13 +2,41 @@ require 'rails_helper'
 
 RSpec.describe PicsController, type: :controller do
 
-  describe "pics#edit action" do
-    it "should successfully show the edit form if the pic is found" do
+  describe "pics#update" do
+    it "should allow users to successfully update pics" do
+      pic = FactoryGirl.create(:pic, message: "Initial Value")
+      patch :update, params: { id: pic.id, pic: { message: 'Changed' } }
+      expect(response).to redirect_to root_path
+      pic.reload
+      expect(pic.message).to eq "Changed"
 
     end
 
-    it "should return a 404 error if the pic is not found" do
+    it "should have http 404 error if the pic cannot be found" do
+      patch :update, params: { id: "YOLO", pic: { message: 'Changed' } }
+      expect(response).to have_http_status(:not_found)
+    end
 
+    it "should render the edit form with an http status of unprocessable_entity" do
+      pic = FactoryGirl.create(:pic, message: "Initial Value")
+      patch :update, params: { id: pic.id, pic: { message: '' } }
+      expect(response).to have_http_status(:unprocessable_entity)
+      pic.reload
+      expect(pic.message).to eq "Initial Value"
+    end
+
+  end
+
+  describe "pics#edit action" do
+    it "should successfully show the edit form if the pic is found" do
+      pic = FactoryGirl.create(:pic)
+      get :edit, params: { id: pic.id }
+      expect(response).to have_http_status(:success)
+    end
+
+    it "should return a 404 error if the pic is not found" do
+      get :edit, params: { id: 'SOMETHING'}
+      expect(response).to have_http_status(:not_found)
     end
 
   end

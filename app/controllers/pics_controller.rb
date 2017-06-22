@@ -3,9 +3,7 @@ class PicsController < ApplicationController
 
   def show
     @pic = Pic.find_by_id(params[:id])
-    if @pic.blank?
-      render plain: 'Not found :(', status: :not_found
-    end
+    return render_not_found if @pic.blank?
   end
 
   def index
@@ -24,10 +22,30 @@ class PicsController < ApplicationController
     end
   end
 
+  def edit
+    @pic = Pic.find_by_id(params[:id])
+    return render_not_found if @pic.blank?
+  end
+
+  def update
+    @pic = Pic.find_by_id(params[:id])
+    return render_not_found if @pic.blank?
+    @pic.update_attributes(pic_params)
+    if @pic.valid?
+      redirect_to root_path
+    else
+      return render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def pic_params
     params.require(:pic).permit(:message)
+  end
+
+  def render_not_found
+    render plain: 'Not found :(', status: :not_found
   end
 
 end
