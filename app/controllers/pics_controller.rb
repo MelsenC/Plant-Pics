@@ -1,4 +1,6 @@
 class PicsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
   end
 
@@ -7,7 +9,7 @@ class PicsController < ApplicationController
   end
 
   def create
-    @pic = Pic.create(pic_params)
+    @pic = current_user.pics.create(pic_params)
     if @pic.valid?
       redirect_to root_path
     else
