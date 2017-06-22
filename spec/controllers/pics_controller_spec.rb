@@ -1,6 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe PicsController, type: :controller do
+
+  describe "pics#show action" do
+    it "should successfully show the page if the pic is found" do
+      pic = FactoryGirl.create(:pic)
+      get :show, params: { id: pic.id }
+      expect(response).to have_http_status(:success)
+    end
+
+    it "should return a 404 error if the pic is not found" do
+      get :show, params: { id: 'TACOCAT' }
+      expect(response).to have_http_status(:not_found)
+    end
+
+  end
+
   describe "pics#index action" do
     it "should successfully load the page" do
       get :index

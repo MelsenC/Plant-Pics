@@ -8,4 +8,10 @@ FactoryGirl.define do
 
   end
   
+  factory :pic do
+    message "hello"
+    association :user
+
+  end
+
 end
