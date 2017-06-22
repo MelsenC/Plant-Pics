@@ -1,6 +1,13 @@
 class PicsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
+  def show
+    @pic = Pic.find_by_id(params[:id])
+    if @pic.blank?
+      render plain: 'Not found :(', status: :not_found
+    end
+  end
+
   def index
   end
 
