@@ -1,5 +1,5 @@
 class PicsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def show
     @pic = Pic.find_by_id(params[:id])
@@ -25,11 +25,14 @@ class PicsController < ApplicationController
   def edit
     @pic = Pic.find_by_id(params[:id])
     return render_not_found if @pic.blank?
+    return render_not_found(:forbidden) if @pic.user != current_user
   end
 
   def update
     @pic = Pic.find_by_id(params[:id])
     return render_not_found if @pic.blank?
+    return render_not_found(:forbidden) if @pic.user != current_user
+
     @pic.update_attributes(pic_params)
     if @pic.valid?
       redirect_to root_path
@@ -41,6 +44,7 @@ class PicsController < ApplicationController
   def destroy
     @pic = Pic.find_by_id(params[:id])
     return render_not_found if @pic.blank?
+    return render_not_found(:forbidden) if @pic.user != current_user
     @pic.destroy
     redirect_to root_path
   end
@@ -51,8 +55,8 @@ class PicsController < ApplicationController
     params.require(:pic).permit(:message)
   end
 
-  def render_not_found
-    render plain: 'Not found :(', status: :not_found
+  def render_not_found(status=:not_found)
+    render plain: "#{status.to_s.titleize} :(", status: status
   end
 
 end
