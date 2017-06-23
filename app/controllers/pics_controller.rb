@@ -38,6 +38,13 @@ class PicsController < ApplicationController
     end
   end
 
+  def destroy
+    @pic = Pic.find_by_id(params[:id])
+    return render_not_found if @pic.blank?
+    @pic.destroy
+    redirect_to root_path
+  end
+
   private
 
   def pic_params

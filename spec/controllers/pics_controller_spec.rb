@@ -2,7 +2,25 @@ require 'rails_helper'
 
 RSpec.describe PicsController, type: :controller do
 
-  describe "pics#update" do
+  describe "pics#destroy action" do 
+    it "should allow a user to destroy pics" do
+      pic = FactoryGirl.create(:pic)
+      delete :destroy, params: { id: pic.id }
+      expect(response).to redirect_to root_path
+      pic = Pic.find_by_id(pic.id)
+      expect(pic).to eq nil
+
+    end
+
+    it "should return a 404 message if we cannot find a pic with the id that is specified" do
+      delete :destroy, params: { id: 'SPACEDUCK'}
+      expect(response).to have_http_status(:not_found)
+
+    end
+
+  end
+
+  describe "pics#update action" do
     it "should allow users to successfully update pics" do
       pic = FactoryGirl.create(:pic, message: "Initial Value")
       patch :update, params: { id: pic.id, pic: { message: 'Changed' } }
