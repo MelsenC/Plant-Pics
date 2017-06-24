@@ -7,6 +7,7 @@ class PicsController < ApplicationController
   end
 
   def index
+    @pics = Pic.all
   end
 
   def new
@@ -52,7 +53,7 @@ class PicsController < ApplicationController
   private
 
   def pic_params
-    params.require(:pic).permit(:message)
+    params.require(:pic).permit(:message, :picture)
   end
 
   def render_not_found(status=:not_found)

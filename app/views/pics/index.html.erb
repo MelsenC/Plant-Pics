@@ -1,1 +1,8 @@
 <h1>Plant Pics!</h1>
+
+<% @pics.each do |pic| %>
+<div>
+  <%= pic.message %>
+  <%= image_tag pic.picture %>
+</div>
+<% end %>
