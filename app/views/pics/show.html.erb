@@ -1,7 +1,7 @@
 <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 card">
 
 <div class="handle">
-    <%= @pic.user.email %>
+    <%= @pic.user.name %>
     <span class="@pic-actions float-right">
       <% if current_user && current_user == @pic.user %>
         <%= link_to 'Edit Post', edit_pic_path(@pic) %>&nbsp;&nbsp;
