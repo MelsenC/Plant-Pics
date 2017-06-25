@@ -14,7 +14,7 @@ RSpec.describe CommentsController, type: :controller do
 
       expect(response).to redirect_to root_path
       expect(pic.comments.length).to eq 1
-      expect(pic.comments.message.first).to eq "I love that plant!"
+      expect(pic.comments.first.message).to eq "I love that plant!"
 
     end
 
