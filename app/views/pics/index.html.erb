@@ -1,8 +1,13 @@
-<h1>Plant Pics!</h1>
-
-<% @pics.each do |pic| %>
-<div>
-  <%= pic.message %>
-  <%= image_tag pic.picture %>
+<div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+  <% @pics.each do |pic| %>
+    <div class="card">
+      <div class="handle">
+        <%= pic.user.email %>
+      </div>
+      <%= image_tag pic.picture, class: 'img-fluid' %>
+      <p>
+        <%= pic.message %>
+      </p>
+    </div>
+  <% end %>
 </div>
-<% end %>

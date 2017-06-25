@@ -1,3 +1,56 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 // https://github.com/twbs/bootstrap-rubygem/blob/master/templates/project/_bootstrap-variables.scss
 @import "bootstrap";
+
+body {
+  background-color: #e0ffe8;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 20px;
+  color: #305038;
+}
+
+.top-nav {
+  background-color: white;
+  border-bottom-color: #305038;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  padding-top: 15px;
+  min-height: 75px;
+  line-height: 1.2;
+  font-size: 16px;
+}
+
+.brand {
+  font-size: 40px;
+  font-family: 'Grand Hotel', cursive;
+}
+
+.top-nav .add a {
+  font-weight: bold;
+  color: #999999;
+  font-size: 20px;
+  padding-left: 8px;
+}
+
+.top-nav .add {
+  margin-top: 10px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: .25rem;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+  border: 1px solid #e8e8e8;
+  margin-top: 40px;
+  padding: 0;
+}
+
+.handle {
+  margin: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.card p, .card .message {
+  margin: 20px;
+}
