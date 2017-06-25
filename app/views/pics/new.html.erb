@@ -1,7 +1,11 @@
-<h1>New Plant Pic</h1>
+<div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 card form">
 
-<%= simple_form_for @pic do |f| %>
-  <%= f.input :message %>
-  <%= f.input :picture %>
-  <%= f.submit "Post!" %>
-<% end %>
+  <h1>New Plant Pic</h1>
+
+  <%= simple_form_for @pic do |f| %>
+    <%= f.input :message %>
+    <%= f.input :picture %>
+    <%= f.submit "Post", class: 'wide-btn' %>
+  <% end %>
+
+</div>

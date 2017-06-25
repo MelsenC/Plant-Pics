@@ -3,11 +3,34 @@
     <div class="card">
       <div class="handle">
         <%= pic.user.email %>
+        <span class="pic-actions float-right">
+          <% if current_user && current_user == pic.user %>
+            <%= link_to 'Edit Post', edit_pic_path(pic) %>&nbsp;&nbsp;
+            <%= link_to 'Delete Post', pic_path(pic), method: :delete, data: {confirm: 'Are you sure?'} %>
+          <% end %>
+        </span>
       </div>
       <%= image_tag pic.picture, class: 'img-fluid' %>
       <p>
         <%= pic.message %>
       </p>
+      <br class="clear-fix" />
+      <div class="comments">
+        <h3>Comments</h3>
+        <% pic.comments.each do |comment| %>
+          <div class="comment">
+            &ldquo;<%= comment.message %>&rdquo;
+            <span class="comment-handle float-right">
+              - <%= comment.user.email %>
+            </span>
+          </div>
+          <br class="clear-fix" />
+        <% end %>
+        <%= simple_form_for Comment.new, url: pic_comments_path(pic) do |f| %>
+          <%= f.input :message, label: false, placeholder: '(add a comment)' %>
+          <%= f.submit 'Add Comment', class: 'wide-btn' %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>

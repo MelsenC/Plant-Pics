@@ -1,1 +1,17 @@
-<%= pic.message %>
+<div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 card">
+
+<div class="handle">
+    <%= @pic.user.email %>
+    <span class="@pic-actions float-right">
+      <% if current_user && current_user == @pic.user %>
+        <%= link_to 'Edit Post', edit_pic_path(@pic) %>&nbsp;&nbsp;
+        <%= link_to 'Delete Post', pic_path(@pic), method: :delete, data: {confirm: 'Are you sure?'} %>
+      <% end %>
+    </span>
+  </div>
+  <%= image_tag @pic.picture, class: 'img-fluid' %>
+  <p>
+    <%= @pic.message %>
+  </p>
+
+</div>

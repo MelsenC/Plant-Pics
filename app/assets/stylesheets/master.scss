@@ -9,6 +9,18 @@ body {
   color: #305038;
 }
 
+a {
+  color: #508060;
+}
+
+a:hover {
+  color: #305038;
+}
+
+h3 {
+  font-weight: bold;
+}
+
 .top-nav {
   background-color: white;
   border-bottom-color: #305038;
@@ -23,6 +35,11 @@ body {
 .brand {
   font-size: 40px;
   font-family: 'Grand Hotel', cursive;
+}
+
+.brand a {
+  text-decoration: none;
+  color:  #305038;
 }
 
 .top-nav .add a {
@@ -42,6 +59,7 @@ body {
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
   border: 1px solid #e8e8e8;
   margin-top: 40px;
+  margin-bottom: 40px;
   padding: 0;
 }
 
@@ -49,8 +67,64 @@ body {
   margin: 10px;
   font-weight: bold;
   font-size: 18px;
+  display: inline;
 }
 
 .card p, .card .message {
   margin: 20px;
+}
+
+.help-block {
+  background-color: #e0ffe8;
+  border-radius: .25rem;
+  padding: 2px 8px 2px 8px;
+  margin: 10px;
+  text-transform: uppercase;
+  font-family: Tahoma, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  display: block;
+}
+
+.comments {
+  padding: 20px;
+}
+
+.comment {
+  margin: 5px;
+}
+
+.comment-handle {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.card.form {
+  padding: 20px;
+}
+
+.control-label {
+  padding-right: 8px;
+}
+
+.wide-btn {
+  background-color: #305038;
+  width: 100%;
+  border: none;
+  font-size: 22px;
+  color: white;
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+input.boolean {
+  margin-right: 8px;
+  margin-top: 5px;
+}
+
+.input.boolean label {
+  margin-top: 5px;
+  line-height: 44px;
 }
