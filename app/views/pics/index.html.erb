@@ -3,9 +3,10 @@
     <div class="card">
       <div class="handle">
         <%= pic.user.name %>
+        <span class="float-right"><%= pic.created_at.strftime("%m/%d/%Y") %></span>
         <span class="pic-actions float-right">
           <% if current_user && current_user == pic.user %>
-            <%= link_to 'Edit Post', edit_pic_path(pic) %>&nbsp;&nbsp;
+            &nbsp;&nbsp;<%= link_to 'Edit Post', edit_pic_path(pic) %>&nbsp;&nbsp;
             <%= link_to 'Delete Post', pic_path(pic), method: :delete, data: {confirm: 'Are you sure?'} %>
           <% end %>
         </span>
