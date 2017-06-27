@@ -7,7 +7,7 @@ class PicsController < ApplicationController
   end
 
   def index
-    @pics = Pic.all
+    @pics = Pic.order(id: :desc)
   end
 
   def new
