@@ -17,7 +17,7 @@
       <br class="clear-fix" />
       <div class="comments">
         <h3>Comments</h3>
-        <% pic.comments.each do |comment| %>
+        <% pic.comments.reverse_each do |comment| %>
           <div class="comment">
             &ldquo;<%= comment.message %>&rdquo;
             <span class="comment-handle float-right">
@@ -28,7 +28,7 @@
         <% end %>
         <%= simple_form_for Comment.new, url: pic_comments_path(pic) do |f| %>
           <%= f.input :message, label: false, placeholder: '(add a comment)' %>
-          <%= f.submit 'Add Comment', class: 'wide-btn' %>
+          <%= f.submit 'Comment', class: 'wide-btn' %>
         <% end %>
       </div>
     </div>
