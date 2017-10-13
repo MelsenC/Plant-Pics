@@ -72,3 +72,6 @@ gem 'figaro'
 gem 'fog-aws'
 
 gem 'simple_form'
+
+# include Mini Magick for resizing images before saving to the database
+gem 'mini_magick'
